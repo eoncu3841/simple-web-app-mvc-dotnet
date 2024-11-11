@@ -27,11 +27,14 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Publish
       run: dotnet publish --configuration Release --output ./publish
+    # Zip the build output
+    - name: Zip the build output
+      run: zip -r ./publish.zip ./publish
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
       with:
         name: dotnet-published-output  # Give the artifact a name
-        path: ./publish                # Path to the output directory
+        path: ./publish.zip            # Path to the output directory
         retention-days: 60             # Number of Days to retain the artifact.
     - name: List workspace files
       run: ls -larth ${{ github.workspace }}/publish
