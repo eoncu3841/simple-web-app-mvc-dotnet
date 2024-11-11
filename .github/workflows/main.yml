@@ -33,5 +33,5 @@ jobs:
         name: dotnet-published-output  # Give the artifact a name
         path: ./publish                # Path to the output directory
         retention-days: 60             # Number of Days to retain the artifact.
-    # - name: List workspace files
-    #   run: ls ${{ github.workspace }}/output
+    - name: List workspace files
+      run: ls ${{ github.workspace }}/dotnet-published-output
