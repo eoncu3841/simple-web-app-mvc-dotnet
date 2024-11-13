@@ -62,4 +62,7 @@ jobs:
           app-name: 'dotnet-test'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_69862ABCE64E46A4A37BEDBF173771BC }}
-          package: '*.zip' 
+          package: '*.zip'
+
+      - name: Copy files to wwwroot
+        run: ls -larth && cp -r publish/*
